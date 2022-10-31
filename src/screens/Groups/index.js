@@ -8,7 +8,7 @@ import { openDatabase } from "react-native-sqlite-storage";
 
 // use hook to create database
 const myContactsDB = openDatabase({name: 'MyContacts.db'});
-const contactsTableName = 'contacts';
+const groupsTableName = 'groups';
 
 
 const GroupsScreen = props => {
@@ -25,7 +25,7 @@ const GroupsScreen = props => {
       myContactsDB.transaction(txn => {
         // execute SELECT
         txn.executeSql(
-          `SELECT * FROM ${contactsTableName}`,
+          `SELECT * FROM ${groupsTableName}`,
           [],
           // callback function to handle the results from the
           // SELECT s
@@ -68,7 +68,7 @@ const GroupsScreen = props => {
       <View>
       <FlatList 
           data={groups}
-          renderItem={({item}) => <Contact post={item} />}
+          renderItem={({item}) => <Group post={item} />}
           keyExtractor={item => item.id}
         />
       </View>

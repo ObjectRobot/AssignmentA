@@ -4,6 +4,7 @@ import { openDatabase } from "react-native-sqlite-storage";
 // use hook to create database
 const myContactsDB = openDatabase({name: 'MyContacts.db'});
 const contactsTableName = 'contacts';
+const groupsTableName = 'groups';
 
 module.exports = {
     // declare function that will create the contacts table
@@ -58,9 +59,9 @@ module.exports = {
             // execute the SQL
             txn.executeSql(
                 `CREATE TABLE IF NOT EXISTS ${groupsTableName}(
-                    id INTEGER PRIMARY KEY AUTOINCREMENT,
-                    name TEXT,
-                    description TEXT,
+                id INTEGER PRIMARY KEY AUTOINCREMENT,
+                name TEXT,
+                description TEXT
                 );`,
                 // arguments needed when using an SQL prepared statement
                 [],
